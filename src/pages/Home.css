@@ -1,0 +1,433 @@
+/* =========================================
+   SANGAM DESIGNS — HERITAGE HOMEPAGE (REDESIGNED)
+   ========================================= */
+
+.home-page {
+  --heritage-cream: #f5efe5;
+  --heritage-paper: #fcf8f1;
+  --heritage-brown: #68402f;
+  --heritage-dark: #35251d;
+  --heritage-muted: #806d5d;
+  --heritage-gold: #a88754;
+
+  color: var(--heritage-dark);
+  overflow-x: clip;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* =========================================
+   HERO SECTION (Split Layout + Shadows)
+   ========================================= */
+
+.heritage-hero {
+  position: relative;
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  min-height: 100vh;
+  padding: clamp(40px, 6vw, 100px) clamp(24px, 8vw, 120px);
+  background-color: var(--heritage-cream);
+  overflow: hidden;
+}
+
+/* Subtle background texture for the whole hero */
+.heritage-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--heritage-gold) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.05;
+  z-index: 0;
+}
+
+/* TEXT CONTENT (Left Side) */
+.heritage-hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  animation: slideInLeft 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.heritage-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  color: var(--heritage-brown);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.heritage-hero__line {
+  width: 40px;
+  height: 1px;
+  background: var(--heritage-gold);
+}
+
+.heritage-hero__title {
+  margin: 0;
+  color: var(--heritage-dark);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(48px, 5vw, 80px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.heritage-hero__title span {
+  display: block;
+  margin-top: 10px;
+  color: var(--heritage-brown);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.heritage-hero__description {
+  margin: 25px 0 35px;
+  color: var(--heritage-muted);
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 90%;
+}
+
+/* Buttons */
+.heritage-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.heritage-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: var(--heritage-dark);
+  color: var(--heritage-paper);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--heritage-dark);
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 20px rgba(53, 37, 29, 0.15);
+}
+
+.heritage-button:hover {
+  background: var(--heritage-brown);
+  border-color: var(--heritage-brown);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(53, 37, 29, 0.25);
+}
+
+.heritage-story-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--heritage-brown);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 15px;
+  font-style: italic;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.heritage-story-link:hover {
+  border-color: var(--heritage-brown);
+}
+
+/* IMAGE CONTAINER (Right Side) */
+.heritage-hero__image {
+  position: relative;
+  z-index: 1;
+  width: 100vh;
+  height: 100vh;
+  max-height: 750px;
+  border-radius: 100px; /* Elegant arched shape */
+  overflow: hidden;
+  box-shadow: 
+    -20px 20px 60px rgba(53, 37, 29, 0.15),
+    0 0 0 10px var(--heritage-paper); /* Framing effect */
+  animation: floatImage 6s ease-in-out infinite, fadeIn 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+.heritage-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* Adjust this to focus on the person */
+  transition: transform 0.8s ease;
+}
+
+.heritage-hero__image:hover img {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   EDITORIAL SECTION
+   ========================================= */
+.editorial-section {
+  display: grid; /* Fixed: changed from flex to grid */
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(30px, 6vw, 80px);
+  padding: clamp(60px, 8vw, 100px) 24px;
+  max-width: 1100px; /* Fixed: changed from 100px to a proper container width */
+  margin: 0 auto;
+}
+
+.editorial-image {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(53, 37, 29, 0.15);
+  /* This controls the maximum height of the image box */
+  height: clamp(350px, 40vw, 520px); 
+  width: 100%;
+}
+
+.editorial-image img {
+  display: block;
+  width: 100%;
+  height: 100%; /* Fills the container exactly */
+  object-fit: cover; /* Prevents the image from stretching/distorting */
+  object-position: center top; /* Keeps the focus on the top/center (prevents cutting faces) */
+  transition: transform 0.8s ease;
+}
+
+.editorial-image:hover img {
+  transform: scale(1.03);
+}
+
+.editorial-image__caption {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  background: var(--heritage-paper);
+  color: var(--heritage-brown);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 14px;
+  font-style: italic;
+  border-radius: 40px; /* Gives it a nice pill shape */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.section-label {
+  display: block;
+  margin-bottom: 20px;
+  color: var(--heritage-gold);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.editorial-text h2 {
+  margin: 0 0 24px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(36px, 4vw, 54px);
+  font-weight: 400;
+  color: var(--heritage-dark);
+  line-height: 1.15;
+}
+
+.editorial-text h2 span {
+  color: var(--heritage-brown);
+  font-style: italic;
+}
+
+.editorial-text p {
+  margin: 0 0 20px;
+  color: var(--heritage-muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--heritage-brown);
+  color: var(--heritage-brown);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.text-link:hover {
+  color: var(--heritage-dark);
+  border-color: var(--heritage-dark);
+}
+
+/* =========================================
+   FEATURED PRODUCTS
+   ========================================= */
+
+.featured-section {
+  padding: clamp(80px, 8vw, 120px) 0;
+  background: var(--heritage-paper);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.section-header h2 {
+  margin: 0 0 15px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  color: var(--heritage-dark);
+}
+
+.section-header p {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--heritage-muted);
+  font-size: 15px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.featured-section__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.heritage-button--outline {
+  background: transparent;
+  color: var(--heritage-brown);
+  border-color: var(--heritage-brown);
+  box-shadow: none;
+}
+
+.heritage-button--outline:hover {
+  background: var(--heritage-brown);
+  color: var(--heritage-paper);
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes floatImage {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 1024px) {
+  .heritage-hero {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding-top: 120px;
+    text-align: center;
+  }
+
+  .heritage-hero__content {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heritage-hero__description {
+    max-width: 100%;
+  }
+
+  .heritage-hero__image {
+    height: 60vh;
+    max-height: 600px;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .editorial-section {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .heritage-hero__title {
+    font-size: 42px;
+  }
+  
+  .heritage-hero__image {
+    height: 450px;
+    border-radius: 120px 120px 20px 20px;
+  }
+
+  .heritage-hero__actions {
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .heritage-button {
+    width: 100%;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
