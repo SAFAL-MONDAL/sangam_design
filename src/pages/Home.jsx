@@ -5,7 +5,7 @@ import { products } from '../data';
 import ProductCard from '../components/ProductCard';
 import './Home.css';
 import heroImage from '../assets/image.png';
-
+import storyImage from '../assets/model.png';
 export default function Home() {
   const [heroLoaded, setHeroLoaded] = useState(false);
 
@@ -82,7 +82,7 @@ export default function Home() {
           <div className="editorial-image">
             {/* Replace this URL with your actual import, e.g., {storyImage} */}
             <img
-              src="/src/assets/model.png"
+              src={storyImage}
               alt="Traditional Indian textile craftsmanship"
               loading="lazy"
             />
